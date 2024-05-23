@@ -6,7 +6,6 @@
   "engines": {
     "node": "18"
   },
-  "type": "module",
   "scripts": {
     "test": "node test/renderToFile.js"
   },
