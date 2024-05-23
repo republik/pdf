@@ -1,39 +1,25 @@
-import React from 'react'
-import ReactPDF from '@react-pdf/renderer'
-import Document from './components/Document'
-import colors from './lib/colors'
+import React from "react";
+import { renderToBuffer } from "@react-pdf/renderer";
+import Document from "./components/Document";
+import colors from "./lib/colors";
 
-export const renderDocument = async (article, query, response) => {
-  const format = article.meta.format || {}
-  const formatMeta = format.meta || {}
-  const formatTitle = formatMeta.title
-  const formatColor = formatMeta.color || colors[formatMeta.kind]
-  const formatKind = formatMeta.kind
+export const renderDocument = async (article, query) => {
+  const format = article.meta.format || {};
+  const formatMeta = format.meta || {};
+  const formatTitle = formatMeta.title;
+  const formatColor = formatMeta.color || colors[formatMeta.kind];
+  const formatKind = formatMeta.kind;
 
-  response.set('Content-Type', 'application/pdf')
-  response.set('X-Robots-Tag', 'noindex')
-  if (query.download) {
-    const fileName = article.meta.path
-      .split('/')
-      .filter(Boolean)
-      .join('-')
-    response.set(
-      'Content-Disposition',
-      `attachment; filename="${fileName}.pdf"`
-    )
-  }
-
-  ReactPDF.renderToStream(
+  return renderToBuffer(
     <Document
-      article={article} options={{
+      article={article}
+      options={{
         formatTitle,
         formatColor,
         formatKind,
-        images: query.images !== '0',
-        size: query.size || 'A4'
+        images: query.images !== "0",
+        size: query.size || "A4",
       }}
     />
-  ).then(output => {
-    output.pipe(response)
-  })
-}
+  );
+};

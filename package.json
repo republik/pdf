@@ -4,15 +4,10 @@
   "description": "Generate PDF files of articles",
   "main": "index.js",
   "engines": {
-    "node": "14"
+    "node": "18"
   },
   "scripts": {
-    "start": "node lib/index.js",
-    "build": "babel src --out-dir lib",
-    "heroku-postbuild": "npm run build",
-    "prepare": "husky install",
-    "dev": "rimraf lib && npm run build && (babel -w src --out-dir lib & nodemon -w lib -w .env lib/index.js)",
-    "cloc": "find . -name '*.js' -not -path \"./node_modules*\" -not -path \"./lib*\" | xargs wc -l",
+    "dev": "tsup src/fetch.js src/render.js --out-dir lib --loader '.js=jsx'",
     "test": "node test/renderToFile.js"
   },
   "lint-staged": {
@@ -22,50 +17,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/orbiting/pdf.git"
+    "url": "git+https://github.com/republik/pdf.git"
   },
   "author": "",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/orbiting/pdf/issues"
+    "url": "https://github.com/republik/pdf/issues"
   },
-  "homepage": "https://github.com/orbiting/pdf#readme",
+  "homepage": "https://github.com/republik/pdf#readme",
   "dependencies": {
-    "@react-pdf/renderer": "2.3.0",
+    "@react-pdf/renderer": "^3.4.4",
     "apollo-fetch": "^0.7.0",
     "d3-time-format": "^2.1.1",
+    "dotenv": "^9.0.2",
     "express": "^4.16.2",
     "graphql-tag": "^2.6.0",
     "hyphen": "^1.6.2",
     "mdast-react-render": "^1.2.0",
-    "react": "^17.0.2",
+    "react": "^18.3.1",
     "react-apollo": "^2.0.4",
-    "react-dom": "^17.0.2",
-    "regenerator-runtime": "^0.13.2",
-    "regiment": "https://github.com/orbiting/regiment"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.14.0",
-    "@babel/eslint-parser": "^7.13.14",
-    "@babel/preset-env": "^7.14.1",
-    "@babel/preset-react": "^7.13.13",
+    "@vercel/node": "^3.1.5",
     "d3-queue": "^3.0.7",
-    "dotenv": "^9.0.1",
-    "eslint": "^7.13.0",
-    "eslint-config-standard": "^16.0.1",
-    "eslint-config-standard-react": "^11.0.1",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.6.1",
-    "eslint-plugin-standard": "^5.0.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "node-fetch": "^2.1.2",
-    "nodemon": "^2.0.6",
-    "rimraf": "^3.0.2",
-    "rw": "^1.3.3",
-    "standard": "^16.0.2"
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
   }
 }
