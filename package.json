@@ -7,7 +7,8 @@
     "node": "18"
   },
   "scripts": {
-    "dev": "tsup src/fetch.js src/render.js --out-dir lib --loader '.js=jsx'",
+    "dev": "tsup src/fetch.js src/render.js --out-dir lib --loader '.js=jsx' --watch",
+    "build": "tsup src/fetch.js src/render.js --out-dir lib --loader '.js=jsx'",
     "test": "node test/renderToFile.js"
   },
   "lint-staged": {
