@@ -51,5 +51,5 @@ export default async function (req: VercelRequest, res: VercelResponse) {
 
   console.timeEnd("render");
 
-  res.send(buf);
+  return res.send(buf);
 }
