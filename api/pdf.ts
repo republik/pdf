@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-import { getDocument } from "../lib/fetch";
-import { renderDocument } from "../lib/render";
+import { getDocument } from "../src/fetch";
+import { renderDocument } from "../src/render";
 
 const stripDotPdf = (path: string) => path.replace(/\.pdf$/, "");
 

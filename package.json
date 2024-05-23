@@ -7,8 +7,6 @@
     "node": "18"
   },
   "scripts": {
-    "dev": "tsup src/fetch.js src/render.js --out-dir lib --loader '.js=jsx' --watch",
-    "build": "tsup src/fetch.js src/render.js --out-dir lib --loader '.js=jsx'",
     "test": "node test/renderToFile.js"
   },
   "lint-staged": {
@@ -40,6 +38,8 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
     "@vercel/node": "^3.1.5",
     "d3-queue": "^3.0.7",
     "tsup": "^8.0.2",
