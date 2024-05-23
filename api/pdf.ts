@@ -46,7 +46,9 @@ export default async function (req: VercelRequest, res: VercelResponse) {
   console.log("renderinnng");
 
   console.time("render");
+
   const buf = await renderDocument(doc.data.article, req.query);
+
   console.timeEnd("render");
 
   res.send(buf);
