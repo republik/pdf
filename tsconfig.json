@@ -7,9 +7,10 @@
     "moduleResolution": "Bundler",
     "skipLibCheck": true,
     "jsx": "react-jsx",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "allowJs": true
   },
 
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js"],
   "exclude": ["node_modules"]
 }
